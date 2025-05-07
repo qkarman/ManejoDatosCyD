@@ -1,9 +1,14 @@
-package aplicacion;
+package aplicacion.menu;
 
 public class AtributosEnemigos
 {
     private int id, nivel, ataque, vida;
     private String nombre, debilidad, tipo;
+
+    public AtributosEnemigos()
+    {
+
+    }
 
     public AtributosEnemigos(int id, int nivel, int ataque, int vida, String nombre, String debilidad, String tipo)
     {
@@ -15,6 +20,18 @@ public class AtributosEnemigos
         this.debilidad = debilidad;
         this.tipo = tipo;
     }
+
+    public AtributosEnemigos(int nivel, int ataque, int vida, String nombre, String debilidad, String tipo)
+    {
+        this.nivel = nivel;
+        this.ataque = ataque;
+        this.vida = vida;
+        this.nombre = nombre;
+        this.debilidad = debilidad;
+        this.tipo = tipo;
+    }
+
+
 
     public int getId()
     {

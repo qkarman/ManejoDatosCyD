@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21274b35-12c6-4488-8f0a-3f764454c1d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/aplicacion/AlgoritmosOptimizacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/aplicacion/AtributosEnemigos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/aplicacion/MenuCrud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/aplicacion/ModelosImplementacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/conexion/Conexion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/datos/EnemigosDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/datos/IEnemigosDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aplicacion/datos/EnemigosDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aplicacion/datos/IEnemigosDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/aplicacion/menu/ModelosImplementacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/aplicacion/AlgoritmosOptimizacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aplicacion/menu/AlgoritmosOptimizacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/aplicacion/AtributosEnemigos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aplicacion/menu/AtributosEnemigos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/aplicacion/MenuCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aplicacion/menu/MenuCrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/aplicacion/ModelosImplementacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/conexion/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aplicacion/conexion/Conexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datos/EnemigosDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datos/IEnemigosDao.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +33,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2wYuNJOTzg5l8yD2FsyHDXv8KJs" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -48,8 +45,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Conexion.executor": "Run",
+    "Application.EnemigosDao.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MenuCrud.executor": "Run",
+    "Application.aplicacion.conexion.Conexion.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
@@ -57,13 +56,26 @@
     "onboarding.tips.debug.path": "C:/Users/st/OneDrive/Escritorio/Proyectos mejorados con Modelos Matematicos/ModeloManejoDeDatos/src/main/java/Sistema_Inventario/Main.java"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Conexion">
+  <component name="RunManager" selected="Application.EnemigosDao">
     <configuration name="Conexion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="conexion.Conexion" />
       <module name="ModeloManejoDeDatos" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="conexion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EnemigosDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="aplicacion.datos.EnemigosDao" />
+      <module name="ModeloManejoDeDatos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="aplicacion.datos.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -85,11 +97,24 @@
       </method>
     </configuration>
     <configuration name="MenuCrud" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="aplicacion.MenuCrud" />
+      <option name="MAIN_CLASS_NAME" value="aplicacion.menu.MenuCrud" />
       <module name="ModeloManejoDeDatos" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="aplicacion.*" />
+          <option name="PATTERN" value="aplicacion.menu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="aplicacion.conexion.Conexion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="aplicacion.conexion.Conexion" />
+      <module name="ModeloManejoDeDatos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="aplicacion.conexion.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,8 +124,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Conexion" />
+        <item itemvalue="Application.EnemigosDao" />
+        <item itemvalue="Application.aplicacion.conexion.Conexion" />
         <item itemvalue="Application.MenuCrud" />
+        <item itemvalue="Application.Conexion" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

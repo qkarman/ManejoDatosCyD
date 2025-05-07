@@ -1,4 +1,4 @@
-package aplicacion;
+package aplicacion.menu;
 import javax.swing.JOptionPane;
 
 public class MenuCrud
@@ -16,7 +16,7 @@ public class MenuCrud
     //*Creamos la funcion del menu
     public void menu()
     {
-        while(activador != 4)
+        while(activador != 5)
         {
             try
             {
