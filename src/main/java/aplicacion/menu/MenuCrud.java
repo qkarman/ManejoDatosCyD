@@ -23,9 +23,10 @@ public class MenuCrud
                 activador = Integer.parseInt(JOptionPane.showInputDialog(null, """
                         *** Menu CRUD ***
                         1.- Crear enemigo
-                        2.- Leer enemigo
-                        3.- Actualizar enemigo
+                        2.- Listar enemigo
+                        3.- Modificar enemigo
                         4.- Eliminar enemigo
+                        5.- Filtrar enemigo
                         5.- Salir
                         Selecciona una opcion:
                         """));
@@ -42,5 +43,10 @@ public class MenuCrud
                 System.out.println("Estas digitando mal las opciones marcadas");
             }
         }
+    }
+
+    public void listarEnemigos()
+    {
+
     }
 }

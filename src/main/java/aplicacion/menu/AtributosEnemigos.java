@@ -102,4 +102,18 @@ public class AtributosEnemigos
     {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString()
+    {
+        return "AtributosEnemigos{" +
+                "id=" + id +
+                ", nivel=" + nivel +
+                ", ataque=" + ataque +
+                ", vida=" + vida +
+                ", nombre='" + nombre + '\'' +
+                ", debilidad='" + debilidad + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
 }

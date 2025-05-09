@@ -4,7 +4,7 @@ import aplicacion.menu.AtributosEnemigos;
 
 
 /**
- * Siguiente paso crear las tablas de la base de datos
+ * Siguiente paso en clase menu invocar todos los metodos
  */
 
 import java.util.*;
@@ -53,7 +53,7 @@ public class EnemigosDao implements IEnemigosDao
         PreparedStatement ps;
         ResultSet rs;
         Connection con = getConexion();
-        String sql = "SELECT * FROM atributosEnemigos ORDER BY id";
+        String sql = "SELECT * FROM enemigos ORDER BY id";
 
         try
         {
@@ -142,7 +142,7 @@ public class EnemigosDao implements IEnemigosDao
     {
         PreparedStatement ps;
         Connection con =  getConexion();
-        String sql = "INSERT INTO AtributosEnemigos(nivel, ataque, vida, nombre, debilidad, tipo)" + "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO enemigos(nivel, ataque, vida, nombre, debilidad, tipo)" + "VALUES (?, ?, ?, ?, ?, ?)";
 
         try
         {
@@ -155,6 +155,7 @@ public class EnemigosDao implements IEnemigosDao
             ps.setString(6,enemigos.getTipo());
             ps.execute();
 
+            return true;
         }
         catch (Exception e)
         {
