@@ -4,7 +4,7 @@ import aplicacion.menu.AtributosEnemigos;
 
 
 /**
- * Siguiente paso en clase menu invocar todos los metodos
+ * Siguiente paso corregir el metodo modificar marca error
  */
 
 import java.util.*;
@@ -181,7 +181,7 @@ public class EnemigosDao implements IEnemigosDao
     {
         PreparedStatement ps;
         Connection con = getConexion();
-        String sql = "UPDATE enemigos SET nivel = ?, ataque = ?, vida = ?, nombre = ?, debilidad = ?, tipo = ?, WHERE id = ?";
+        String sql = "UPDATE enemigos SET nivel = ?, ataque = ?, vida = ?, nombre = ?, debilidad = ?, tipo = ? WHERE id = ?";
 
         try
         {
@@ -192,7 +192,9 @@ public class EnemigosDao implements IEnemigosDao
             ps.setString(4,enemigos.getNombre());
             ps.setString(5,enemigos.getDebilidad());
             ps.setString(6,enemigos.getTipo());
-            ps.execute();
+            ps.setInt(7,enemigos.getId());
+            ps.executeUpdate();
+            return true;
         }
         catch (Exception e)
         {

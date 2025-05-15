@@ -7,7 +7,6 @@
     <list default="true" id="21274b35-12c6-4488-8f0a-3f764454c1d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/aplicacion/datos/EnemigosDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aplicacion/datos/EnemigosDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/aplicacion/menu/AtributosEnemigos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aplicacion/menu/AtributosEnemigos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/aplicacion/menu/MenuCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aplicacion/menu/MenuCrud.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +48,7 @@
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/st/OneDrive/Escritorio/Proyectos mejorados con Modelos Matematicos/ModeloManejoDeDatos/src/main/java/Sistema_Inventario/Main.java&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.EnemigosDao">
+  <component name="RunManager" selected="Application.MenuCrud">
     <configuration name="Conexion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="conexion.Conexion" />
       <module name="ModeloManejoDeDatos" />
@@ -117,9 +116,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MenuCrud" />
         <item itemvalue="Application.EnemigosDao" />
         <item itemvalue="Application.aplicacion.conexion.Conexion" />
-        <item itemvalue="Application.MenuCrud" />
         <item itemvalue="Application.Conexion" />
         <item itemvalue="Application.Main" />
       </list>
