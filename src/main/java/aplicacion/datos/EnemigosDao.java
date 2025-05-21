@@ -4,7 +4,7 @@ import aplicacion.menu.AtributosEnemigos;
 
 
 /**
- * Siguiente paso corregir el metodo modificar marca error
+ * Siguiente paso, terminar los try y catch y, modular el programa en pedazos diminutos por el high
  */
 
 import java.util.*;
@@ -98,7 +98,7 @@ public class EnemigosDao implements IEnemigosDao
         PreparedStatement ps;
         ResultSet rs;
         Connection con = getConexion();
-        String sql = "SELECT * FROM enemigo WHERE id = ?";
+        String sql = "SELECT * FROM enemigos WHERE id = ?";
 
         try
         {

@@ -121,7 +121,7 @@ public class MenuCrud
             AtributosEnemigos invocar = new AtributosEnemigos();
             invocar.setId(busquedaId);
 
-            if(invocar == null)
+            if(!enemigosDao.buscarEnemigoPorId(invocar))
             {
                 JOptionPane.showMessageDialog(null,"Enemigo no encontrado");
                 return;
@@ -147,35 +147,68 @@ public class MenuCrud
                 {
                     case 1 ->
                     {
-                        int nuevoNivel = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo nivel del enemigo: "));
-                        invocar.setNivel(nuevoNivel);
+                        boolean entradaValida = false;
+                        while(!entradaValida)
+                        {
+                            try
+                            {
+                                int nuevoNivel = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo nivel del enemigo: "));
+
+                                    invocar.setNivel(nuevoNivel);
+                                    System.out.println("Nivel modificado satisfactoriamente, tu nuevo nivel es: " + invocar.getNivel());
+                                    entradaValida = true;
+                            }
+                            catch(NumberFormatException e)
+                            {
+                                System.out.println("Solo se aceptan numeros enteros: " + e.getMessage());
+                            }
+                        }
                     }
                     case 2 ->
                     {
-                        int nuevoAtaque = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo ataque del enemigo: "));
-                        invocar.setAtaque(nuevoAtaque);
+                        boolean entradavalida = false;
+                        while(!entradavalida)
+                        {
+                            try
+                            {
+                                int nuevoAtaque = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo ataque del enemigo: "));
+                                invocar.setAtaque(nuevoAtaque);
+                                System.out.println("Ataque modificado satisfactoriamente, tu nuevo ataque es: " + invocar.getAtaque());
+                                entradavalida = true;
+                            }
+                            catch(NumberFormatException e)
+                            {
+                                System.out.println("Solo se aceptan numeros enteros" + e.getMessage());
+                            }
+                        }
+
                     }
                     case 3 ->
                     {
                         int nuevaVida = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita la nueva vida del enemigo: "));
                         invocar.setVida(nuevaVida);
+                        System.out.println("Vida modificada satisfactoriamente, tu nueva vida es: " + invocar.getVida());
                     }
                     case 4 ->
                     {
                         String nuevoNombre = JOptionPane.showInputDialog(null,"Digita el nuevo nombre: ");
                         invocar.setNombre(nuevoNombre);
+                        System.out.println("Nombre modificado satisfactoriamente, tu nuevo nombre es: " + invocar.getVida());
                     }
                     case 5 ->
                     {
                         String nuevaDebilidad = JOptionPane.showInputDialog(null,"Digita la nueva debilidad: ");
                         invocar.setDebilidad(nuevaDebilidad);
+                        System.out.println("Debilidad modificada satisfactoriamente, tu nueva debilidad es: " + invocar.getDebilidad());
                     }
                     case 6 ->
                     {
                         String nuevoTipo = JOptionPane.showInputDialog(null,"Digita el nuevo tipo: ");
                         invocar.setTipo(nuevoTipo);
+                        System.out.println("Tipo modificado satisfactoriamente, tu nuevo tipo es : " + invocar.getTipo());
                     }
                     case 7 -> System.out.println("Nos vemos jefe");
+
                     default -> System.out.println("Digitaste algo mal");
                 }
             }
