@@ -4,7 +4,7 @@ import aplicacion.menu.AtributosEnemigos;
 
 
 /**
- * Siguiente paso, terminar los try y catch y, modular el programa en pedazos diminutos por el high
+ * Siguiente paso, Implementar los filtros y vincularlos a los metodos correspondientes
  */
 
 import java.util.*;

@@ -1,13 +1,16 @@
 package aplicacion.menu;
 import aplicacion.datos.EnemigosDao;
-import aplicacion.datos.IEnemigosDao;
-
 import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MenuCrud
 {
     //Creamos nuestra variable global
     protected int activador;
+    private final Logger mensaje = Logger.getLogger(MenuCrud.class.getName());
+
+    AtributosEnemigos invocar = new AtributosEnemigos();
 
     //Creamos la instancia de EnemigosDao
     private final EnemigosDao enemigosDao = new EnemigosDao();
@@ -43,14 +46,14 @@ public class MenuCrud
                     case 2 -> listarEnemigos();
                     case 3 -> modificarEnemigo();
                     case 4 -> eliminarEnemigo();
-                    case 5 -> System.out.println("Hola");
+                    case 5 -> JOptionPane.showMessageDialog(null,"Hola");
                     case 6 -> JOptionPane.showMessageDialog(null,"Nos vemos pronto Capitan");
-                    default -> System.out.println("Escribiste una opcion incorrecta");
+                    default -> mensaje.warning("Escribiste una opcion incorrecta");
                 }
             }
-            catch(Exception n)
+            catch(Exception e)
             {
-                System.out.println("Estas digitando mal las opciones marcadas");
+                mensaje.warning("Estas digitando mal las opciones " + e.getMessage());
             }
         }
     }
@@ -68,8 +71,6 @@ public class MenuCrud
         }
         else
         {
-            //Mostramos todos los enemigos
-            enemigos.forEach(enemigo -> System.out.println(enemigo));
             enemigos.forEach(enemigo -> JOptionPane.showMessageDialog(null,enemigo));
         }
     }
@@ -108,7 +109,7 @@ public class MenuCrud
         }
         catch (Exception e)
         {
-            System.out.println("Error al crear el enemigo" + e.getMessage());
+            mensaje.warning("Error al crear el enemigo " + e.getMessage());
         }
     }
 
@@ -118,7 +119,6 @@ public class MenuCrud
         try
         {
             int busquedaId = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el id del enemigo a modificar"));
-            AtributosEnemigos invocar = new AtributosEnemigos();
             invocar.setId(busquedaId);
 
             if(!enemigosDao.buscarEnemigoPorId(invocar))
@@ -145,71 +145,21 @@ public class MenuCrud
 
                 switch (opcion)
                 {
-                    case 1 ->
-                    {
-                        boolean entradaValida = false;
-                        while(!entradaValida)
-                        {
-                            try
-                            {
-                                int nuevoNivel = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo nivel del enemigo: "));
+                    case 1 -> nuevoNivel();
 
-                                    invocar.setNivel(nuevoNivel);
-                                    System.out.println("Nivel modificado satisfactoriamente, tu nuevo nivel es: " + invocar.getNivel());
-                                    entradaValida = true;
-                            }
-                            catch(NumberFormatException e)
-                            {
-                                System.out.println("Solo se aceptan numeros enteros: " + e.getMessage());
-                            }
-                        }
-                    }
-                    case 2 ->
-                    {
-                        boolean entradavalida = false;
-                        while(!entradavalida)
-                        {
-                            try
-                            {
-                                int nuevoAtaque = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo ataque del enemigo: "));
-                                invocar.setAtaque(nuevoAtaque);
-                                System.out.println("Ataque modificado satisfactoriamente, tu nuevo ataque es: " + invocar.getAtaque());
-                                entradavalida = true;
-                            }
-                            catch(NumberFormatException e)
-                            {
-                                System.out.println("Solo se aceptan numeros enteros" + e.getMessage());
-                            }
-                        }
+                    case 2 -> nuevoAtaque();
 
-                    }
-                    case 3 ->
-                    {
-                        int nuevaVida = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita la nueva vida del enemigo: "));
-                        invocar.setVida(nuevaVida);
-                        System.out.println("Vida modificada satisfactoriamente, tu nueva vida es: " + invocar.getVida());
-                    }
-                    case 4 ->
-                    {
-                        String nuevoNombre = JOptionPane.showInputDialog(null,"Digita el nuevo nombre: ");
-                        invocar.setNombre(nuevoNombre);
-                        System.out.println("Nombre modificado satisfactoriamente, tu nuevo nombre es: " + invocar.getVida());
-                    }
-                    case 5 ->
-                    {
-                        String nuevaDebilidad = JOptionPane.showInputDialog(null,"Digita la nueva debilidad: ");
-                        invocar.setDebilidad(nuevaDebilidad);
-                        System.out.println("Debilidad modificada satisfactoriamente, tu nueva debilidad es: " + invocar.getDebilidad());
-                    }
-                    case 6 ->
-                    {
-                        String nuevoTipo = JOptionPane.showInputDialog(null,"Digita el nuevo tipo: ");
-                        invocar.setTipo(nuevoTipo);
-                        System.out.println("Tipo modificado satisfactoriamente, tu nuevo tipo es : " + invocar.getTipo());
-                    }
-                    case 7 -> System.out.println("Nos vemos jefe");
+                    case 3 -> nuevaVida();
 
-                    default -> System.out.println("Digitaste algo mal");
+                    case 4 -> nuevoNombre();
+
+                    case 5 -> nuevaDebilidad();
+
+                    case 6 -> nuevoTipo();
+
+                    case 7 -> mensaje.log(Level.INFO,"Nos vemos jefe");
+
+                    default -> mensaje.warning("Escribiste una opcion incorrecta");
                 }
             }
 
@@ -227,7 +177,7 @@ public class MenuCrud
         }
         catch (Exception e)
         {
-            System.out.println("Error en: " + e.getMessage());
+            mensaje.warning("Error en: " + e.getMessage());
         }
     }
 
@@ -238,7 +188,6 @@ public class MenuCrud
         {
             int busquedaId = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el id del enemigo a eliminar: "));
 
-            AtributosEnemigos invocar = new AtributosEnemigos();
             invocar.setId(busquedaId);
 
             if(enemigosDao.eliminarEnemigo(invocar))
@@ -253,7 +202,129 @@ public class MenuCrud
         }
         catch (Exception e)
         {
-            System.out.println("Error en: " + e.getMessage());
+            mensaje.warning("Error en: " + e.getMessage());
+        }
+    }
+
+    //*Metodos para modular el código de modificacion
+    //*Metodo para el nuevo nivel
+    public void nuevoNivel()
+    {
+        boolean entradaValida = false;
+        while(!entradaValida)
+        {
+            try
+            {
+                int nuevoNivel = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo nivel del enemigo: "));
+
+                invocar.setNivel(nuevoNivel);
+                mensaje.log(Level.INFO,"Nivel modificado satisfactoriamente, tu nuevo nivel es: {0}", new Object[]{invocar.getNivel()});
+                entradaValida = true;
+            }
+            catch(NumberFormatException e)
+            {
+                mensaje.warning("Solo se aceptan numeros enteros: " + e.getMessage());
+            }
+        }
+    }
+
+    //*Metodo para el nuevo ataque
+    public void nuevoAtaque()
+    {
+        boolean entradavalida = false;
+        while(!entradavalida)
+        {
+            try
+            {
+                int nuevoAtaque = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita el nuevo ataque del enemigo: "));
+                invocar.setAtaque(nuevoAtaque);
+                mensaje.log(Level.INFO,"Ataque modificado satisfactoriamente, tu nuevo ataque es: {0}", new Object[]{invocar.getAtaque()});
+                entradavalida = true;
+            }
+            catch(NumberFormatException e)
+            {
+                mensaje.warning("Solo se aceptan numeros enteros" + e.getMessage());
+            }
+        }
+    }
+
+    //*Metodo para la nueva vida
+    public void nuevaVida()
+    {
+        boolean entradavalida = false;
+        while(!entradavalida)
+        {
+            try
+            {
+                int nuevaVida = Integer.parseInt(JOptionPane.showInputDialog(null,"Digita la nueva vida del enemigo: "));
+                invocar.setVida(nuevaVida);
+                mensaje.log(Level.INFO,"Vida modificada satisfactoriamente, tu nueva vida es: {0}", new Object[]{invocar.getVida()});
+                entradavalida = true;
+            }
+            catch(Exception e)
+            {
+                mensaje.warning("Solo se aceptan numeros enteros" + e.getMessage());
+            }
+        }
+    }
+
+    //*Metodo para el nuevo nombre
+    public void nuevoNombre()
+    {
+        boolean entradavalida = false;
+        while(!entradavalida)
+        {
+            try
+            {
+                String nuevoNombre = JOptionPane.showInputDialog(null,"Digita el nuevo nombre: ");
+                invocar.setNombre(nuevoNombre);
+                mensaje.log(Level.INFO,"Nombre modificado satisfactoriamente, tu nuevo nombre es: {0}", new Object[]{invocar.getNombre()});
+                entradavalida = true;
+            }
+            catch (Exception e)
+            {
+                mensaje.warning("Solo se aceptan letras No numeros " + e.getMessage());
+            }
+        }
+    }
+
+    //*Metodo para la nueva debilidad
+    public void nuevaDebilidad()
+    {
+        boolean entradavalida = false;
+        while(!entradavalida)
+        {
+            try
+            {
+                String nuevaDebilidad = JOptionPane.showInputDialog(null,"Digita la nueva debilidad: ");
+                invocar.setDebilidad(nuevaDebilidad);
+                mensaje.log(Level.INFO,"Debilidad modificada satisfactoriamente, tu nueva debilidad es: {0}", new Object[]{invocar.getDebilidad()});
+                entradavalida = true;
+            }
+            catch(Exception e)
+            {
+                mensaje.warning("Solo se aceptan letras NO numeros " + e.getMessage());
+            }
+        }
+    }
+
+    //*Metodo para el nuevo Tipo
+    public void nuevoTipo()
+    {
+        boolean entradavalida = false;
+        while(!entradavalida)
+        {
+            try
+            {
+                String nuevoTipo = JOptionPane.showInputDialog(null,"Digita el nuevo tipo: ");
+                invocar.setTipo(nuevoTipo);
+                mensaje.log(Level.INFO,"Tipo modificado satisfactoriamente, tu nuevo tipo es: {0}", new Object[]{invocar.getTipo()});
+                entradavalida = true;
+            }
+            catch (Exception e)
+            {
+                mensaje.warning("Solo se aceptan letras NO numeros " + e.getMessage());
+            }
         }
     }
 }
