@@ -116,4 +116,5 @@ public class AtributosEnemigos
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
+
 }

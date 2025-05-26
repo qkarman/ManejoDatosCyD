@@ -4,7 +4,7 @@ import aplicacion.menu.AtributosEnemigos;
 
 
 /**
- * Siguiente paso, Implementar los filtros y vincularlos a los metodos correspondientes
+ * Siguiente paso, Seguir con los otros filtros
  */
 
 import java.util.*;
