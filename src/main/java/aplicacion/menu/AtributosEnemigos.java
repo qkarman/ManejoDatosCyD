@@ -106,15 +106,14 @@ public class AtributosEnemigos
     @Override
     public String toString()
     {
-        return "AtributosEnemigos{" +
-                "id=" + id +
-                ", nivel=" + nivel +
-                ", ataque=" + ataque +
-                ", vida=" + vida +
-                ", nombre='" + nombre + '\'' +
-                ", debilidad='" + debilidad + '\'' +
-                ", tipo='" + tipo + '\'' +
-                '}';
+        return "⚔\uFE0F AtributosEnemigos ⚔\uFE0F" + "\n" +
+                "ID = " + id + "\n" +
+                "Nivel = " + nivel + "\n" +
+                "Ataque = " + ataque + "\n" +
+                "Vida = " + vida + "\n" +
+                "Nombre = '" + nombre + '\'' + "\n" +
+                "Debilidad = '" + debilidad + '\'' + "\n" +
+                "Tipo = '" + tipo + '\'' + "\n";
     }
 
 }
