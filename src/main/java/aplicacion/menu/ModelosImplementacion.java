@@ -4,22 +4,23 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
 /**
  * Aqui vamos a desarrollar los filtros correspondientes para
- * facilitar la busqueda de datos del usuario
+ * facilitar la busqueda de datos del usuario seguimos con los filtros
  */
 
 public class ModelosImplementacion
 {
     private int opcion;
 
-    private static final Logger log = LoggerFactory.getLogger(ModelosImplementacion.class);
+    private static final Logger log = Logger.getLogger(ModelosImplementacion.class.getName());
+
     //Creamos el metodo main para hacer pruebas unitarias
     public static void main(String[] args)
     {
         ModelosImplementacion prueba = new ModelosImplementacion();
-        prueba.busquedaLetra();
-        prueba.busquedaIdEnemigo();
+        prueba.menu();
     }
     //Creamos un menu para gestionar los filtros que se van a usar
     public void menu()
@@ -32,8 +33,8 @@ public class ModelosImplementacion
                         *** BIENVENIDO AL MENU DE FILTROS ***
                         1.- Busqueda por inicial de letra
                         2.- Busqueda por id
-                        3.- Busqueda por nivel de menor a menor
-                        4.- Busqueda por nivel de mayor a menor
+                        3.- Busqueda por nivel de menor a mayor
+                        4.- Busqueda por tipo
                         5.- Busqueda por tipo
                         6.- Busqueda de ataque, vida y nivel
                         7.- Busqueda por nombre, debilidad y tipo
@@ -41,9 +42,10 @@ public class ModelosImplementacion
                         Selecciona una opcion:"""));
                 switch (opcion)
                 {
-                    case 1 -> busquedaLetra();
-                    case 2 -> busquedaIdEnemigo();
-                    case 3 -> System.out.println("hol");
+                    case 1 -> filtroBusquedaLetra();
+                    case 2 -> filtroBusquedaIdEnemigo();
+                    case 3 -> filtroMenorMayor();
+                    case 4 -> filtroBuscarTipo();
                     default -> System.out.println("Seleccionaste una opcion incorrecta ");
                 }
             }
@@ -55,7 +57,7 @@ public class ModelosImplementacion
     }
 
     //*Creamos el primer filtro busqueda de letra
-    public void busquedaLetra()
+    public void filtroBusquedaLetra()
     {
         String letra = JOptionPane.showInputDialog(null,"Selecciona la letra de busqueda");
 
@@ -84,7 +86,7 @@ public class ModelosImplementacion
     }
 
     //*Creamos un metodo para hacer busqueda con el id del enemigo
-    public void busquedaIdEnemigo()
+    public void filtroBusquedaIdEnemigo()
     {
         int busqueda;
 
@@ -120,6 +122,77 @@ public class ModelosImplementacion
         }
     }
 
+    //*Creamos el metodo para buscar por nivel de menor a mayor
+    public void filtroMenorMayor()
+    {
+        int opcion;
+
+        try
+        {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+                    "Selecciona 1 para ordenar enemigos por NIVEL de menor a mayor. \n" +
+                    "Selecciona 2 para ordenar enemigos por nivel de mayor a menor"));
+        }
+        catch(NumberFormatException e)
+        {
+            log.info("Entrada invalida: " + e.getMessage());
+            return;
+        }
+
+        EnemigosDao nivelEnemigo = new EnemigosDao();
+        List<AtributosEnemigos> lista = nivelEnemigo.listarEnemigos();
+
+        if(opcion == 1)
+        {
+            //Ordenar de menor a mayor por nivel
+            lista.stream().sorted(Comparator.comparingInt(AtributosEnemigos::getNivel))
+                    .forEach(System.out::println);
+        }
+        else if(opcion == 2)
+        {
+            //Ordenar de mayor a menor
+            lista.stream().sorted(Comparator.comparingInt(AtributosEnemigos::getNivel).reversed())
+                            .forEach(System.out::println);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Regresando a menu de filtros...");
+        }
+    }
+
+    //*Creamos un filtro para buscar tipo
+    public void filtroBuscarTipo()
+    {
+        int opcion = 0;
+
+        try
+        {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(null,"Si quieres usar el" +
+                    "filtro de tipo de enemigos selecciona 1."));
+        }
+        catch (NumberFormatException e)
+        {
+            log.info("Entrada invalida! " + e.getMessage());
+        }
+
+        EnemigosDao tipoEnemigo = new EnemigosDao();
+        List<AtributosEnemigos> listaTipo = tipoEnemigo.listarEnemigos();
+
+        if(opcion == 1)
+        {
+            Set<String> tiposUnicos = listaTipo.stream()
+                    .map(AtributosEnemigos::getTipo)
+                    .filter(tipo -> tipo != null && !tipo.trim().isEmpty())
+                    .map(String::toLowerCase)
+                    .collect(Collectors.toSet());
+
+            tiposUnicos.forEach(System.out::println);
+        }
+        else
+        {
+            log.info("Saliendo al menu de filtros jefe....");
+        }
+    }
     //*Creamos el primer filtro para nuestro sistema de datos
     //*FilterStats el cual va a seleccionar solo, el ataque, vida y nivel
     public void filtroStats()
