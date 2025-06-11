@@ -11,6 +11,7 @@ public class MenuCrud
     private final Logger mensaje = Logger.getLogger(MenuCrud.class.getName());
 
     AtributosEnemigos invocar = new AtributosEnemigos();
+    ModelosImplementacion filtros = new ModelosImplementacion();
 
     //Creamos la instancia de EnemigosDao
     private final EnemigosDao enemigosDao = new EnemigosDao();
@@ -46,8 +47,8 @@ public class MenuCrud
                     case 2 -> listarEnemigos();
                     case 3 -> modificarEnemigo();
                     case 4 -> eliminarEnemigo();
-                    case 5 -> JOptionPane.showMessageDialog(null,"Hola");
-                    case 6 -> JOptionPane.showMessageDialog(null,"Nos vemos pronto Capitan");
+                    case 5 -> filtros.menuFiltros();
+                    case 6 -> JOptionPane.showMessageDialog(null,"Nos vemos pronto jefe...");
                     default -> mensaje.warning("Escribiste una opcion incorrecta");
                 }
             }
